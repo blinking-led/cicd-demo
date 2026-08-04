@@ -1,2 +1,0 @@
-# cicd-demo
-cicd-demo
