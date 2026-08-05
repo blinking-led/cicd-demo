@@ -12,17 +12,17 @@ jobs:
             packages: write
             
         steps:
-            - mane: Checkout code
+            - name: Checkout code
               uses: sctions/checkout@v4
               
-            - mane: Log in GitHub Conteiner Registry
+            - name: Log in GitHub Conteiner Registry
               uses: docker/login-action@v3
               with:
                 registry: ghcr.io
                 username: ${{ github.actor }}
                 password: ${{ secret.GITHUB_TOKEN }}
                 
-            - mane: Extract metadata
+            - name: Extract metadata
               id: meta
               uses: docker/metadata-action@v5
               with:
@@ -31,7 +31,7 @@ jobs:
                   type=raw,value=latest
                   type=raw,value=v1.0
                                   
-            - mane: Build and push Docker image
+            - name: Build and push Docker image
               uses: docker/build-push-action@v5
               with:
                 context: .
